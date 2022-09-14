@@ -1,4 +1,4 @@
-package com.company;
+package com.company.nextBiggerNumber;
 
 import java.util.ArrayList;
 import java.util.Collections;
