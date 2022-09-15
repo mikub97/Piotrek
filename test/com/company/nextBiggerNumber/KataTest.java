@@ -45,4 +45,14 @@ class KataTest {
         }
     }
 
+    @Test
+    void swap() {
+        List list = new ArrayList();
+        list.add(32);
+        list.add(54);
+        list.add(34);
+        list.add(100);
+        Kata.swap(list,2,3);
+        System.out.println(list.toString());
+;    }
 }

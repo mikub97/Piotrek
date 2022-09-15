@@ -24,10 +24,29 @@ public class Kata {
         }
         return tol;
     }
+
+    public static <T> void swap(List<T> list, int i , int j ){
+        T tmp = list.get(i);
+        list.set(i, list.get(j));
+        list.set(j, tmp);
+
+    }
+
     public static long nextBiggerNumber(long n) {
         List<Integer> digits = toList(n);
-        return toLong(digits);
+        for (int i = digits.size()-1; i > 0; i--) {
+            if(digits.get(i)>digits.get(i-1)){
+                Kata.swap(digits,i,i-1);
+                for (int j = i ; j < digits.size()-1 ; j++) {
+                    if (digits.get(j) > digits.get(j + 1)) {
+                        swap(digits, j, j + 1);
+                    }
+                }
+                return toLong(digits);
 
+            }
+        }
+        return -1;
 
     }
 }
