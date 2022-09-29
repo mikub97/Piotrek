@@ -16,5 +16,6 @@ public class Main {
             assert outputs[i] == Kata.nextBiggerNumber(inputs[i]);
         }
     }
+
 }
 
