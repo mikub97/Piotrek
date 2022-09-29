@@ -19,8 +19,8 @@ public class FibTest {
     public void testFib() {
         for (int i = 0; i < 40; i++) {
             System.out.println(Fib.fib(i));
-            System.out.println(Fib.fib_iter(i));
-            assertEquals(Fib.fib(i), Fib.fib_iter(i));
+//            System.out.println(Fib.fib_iter(i));
+//            assertEquals(Fib.fib(i), Fib.fib_iter(i));
         }
     }
 
@@ -47,7 +47,7 @@ public class FibTest {
             long timeElapsedR = finishR - startR;
 
             long startI = System.currentTimeMillis();
-            int resI = Fib.fib_iter(i);
+//            int resI = Fib.fib_iter(i);
             long finishI = System.currentTimeMillis();
             long timeElapsedI = finishI - startI;
             tests.add(i+","+timeElapsedR+","+timeElapsedI);
@@ -55,14 +55,6 @@ public class FibTest {
         writeCSV(tests, CSV_FILE_NAME);
 
     }
-    @Test
-    public void testRabbit() {
-        Random r = new Random();
-        for (int i = 0; i < 100; i++) {
-            int n = r.nextInt(5,20);
-            int b = r.nextInt(1,10);
-            assertEquals(Fib.fibRabbitsM(n,b),Fib.fibRabbitsP(n,b));
-        }
-    }
+
 
 }
