@@ -1,4 +1,4 @@
-package com.company.sorting.oop;
+package com.company.sorting.playing_cards;
 
 public enum Rank {
     TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE;

@@ -1,4 +1,4 @@
-package com.company.sorting.oop;
+package com.company.sorting.playing_cards;
 
 
 public class Card implements Comparable<Card> {

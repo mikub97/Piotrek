@@ -1,4 +1,4 @@
-package com.company.sorting.oop;
+package com.company.sorting.playing_cards;
 
 import java.util.Arrays;
 import java.util.Collections;

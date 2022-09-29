@@ -1,8 +1,8 @@
 package com.company.sorting;
 
-import com.company.sorting.oop.Card;
-import com.company.sorting.oop.Rank;
-import com.company.sorting.oop.Suit;
+import com.company.sorting.playing_cards.Card;
+import com.company.sorting.playing_cards.Rank;
+import com.company.sorting.playing_cards.Suit;
 import org.junit.jupiter.api.Test;
 
 class CardTest {
