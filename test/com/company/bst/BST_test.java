@@ -14,7 +14,7 @@ public class BST_test {
         Random r = new Random();
         List<Integer> nums = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            int n = r.nextInt();
+            int n = r.nextInt(0,50);
             nums.add(n);
             bst.insert(n);
         }
