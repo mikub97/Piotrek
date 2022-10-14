@@ -18,6 +18,7 @@ public class BST_test {
             nums.add(n);
             bst.insert(n);
         }
+        System.out.println(bst.startFindMin());
         System.out.println("end");
 
     }
