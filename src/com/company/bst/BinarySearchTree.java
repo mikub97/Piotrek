@@ -48,25 +48,26 @@ public class BinarySearchTree <T extends Comparable<T>> {
         }
     }
 
-    public T startFindMin(){
-        return findMin(root);
+    public T min(){
+        return min(root);
     }
-    private T findMin(Node node){
-        if(node.left == null){
-            return (T) node.data;
-        }else{
-            return (T)findMin(node.left);
+
+    private T min(Node root) {
+        if (root.left==null){
+            return (T) root.data;
         }
+        return (T) min(root.left);
     }
-    public T startFindMax(){
-        return findMin(root);
+
+    public T max(){
+        return max(root);
     }
-    private T findMax(Node node){
-        if(node.right == null){
-            return (T) node.data;
-        }else{
-            return (T)findMin(node.right);
+
+    private T max(Node root) {
+        if (root.right==null){
+            return (T) root.data;
         }
+        return (T) min(root.right);
     }
 
 
