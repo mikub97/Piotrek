@@ -2,10 +2,8 @@ package com.company.graph;
 
 public interface GraphI <T>{
 
-    void addVertex(T t) throws Exception;
-
-    void addEdge(T source, T dest) throws Exception;
-
+    void addVertex(T t);
+    void addEdge(T source, T dest);
     int getVertexCount();
 
     int getEdgeCount();
@@ -15,4 +13,6 @@ public interface GraphI <T>{
     boolean hasEdge(T source, T destination);
 
     String toString();
+
+    void DFS_recursive(T t);
 }

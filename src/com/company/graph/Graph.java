@@ -10,10 +10,10 @@ public class Graph <T> implements GraphI<T>{
 
     private Map<T, List<T>> adjacencyList;
 
-
     public Graph(){
-        this.adjacencyList = new HashMap<>();
+         this(true);
     }
+
     @Override
     public void addVertex(T t) {
         if(! adjacencyList.containsKey(t))   adjacencyList.put(t, new ArrayList<>());
@@ -37,7 +37,7 @@ public class Graph <T> implements GraphI<T>{
     public int getEdgeCount() {
         int c=0;
         for (var adj: adjacencyList.values()) {
-            c =+ adj.size();
+            c += adj.size();
 
         }
         return c;
