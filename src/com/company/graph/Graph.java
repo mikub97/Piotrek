@@ -104,7 +104,7 @@ public class Graph <T extends Comparable<T>> implements GraphI<T>{
             }
         });
         for (int i = 0; i < adjs.size(); i++) {
-            if (!visited.contains(adjs.get(i)));
+            if (!visited.contains(adjs.get(i)))
                 DFS_rec(adjs.get(i));
         }
     }

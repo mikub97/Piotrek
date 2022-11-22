@@ -16,9 +16,7 @@ public class GraphTest {
     }
     @Test
     public void test(){
-        integerGraph.addEdge(1,2);
-        //System.out.println(integerGraph.getEdgeCount());
-        //System.out.println(integerGraph.hasEdge(3,2));
+        
     }
 
     @Test
