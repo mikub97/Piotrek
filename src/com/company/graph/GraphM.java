@@ -14,8 +14,12 @@ public class GraphM <T extends Comparable<T>> implements GraphI<T>{
         this.arr  = new ArrayList<>();
     }
 
+    public GraphM(int size){
+        this(size, true, false);
+    }
 
-    @Override
+
+     @Override
     public void addVertex(T t) {
         this.arr.add(t);
         this.matrix.add( new ArrayList<>());
@@ -39,6 +43,20 @@ public class GraphM <T extends Comparable<T>> implements GraphI<T>{
 
     }
 
+    public void addEdge(T source, T dest, int weight){
+        if(this.is_directed) {
+            this.adjMatrix[getIndex(source)][getIndex(dest)] = weight;
+        }else{
+            this.adjMatrix[getIndex(source)][getIndex(dest)] = weight;
+            this.adjMatrix[getIndex(dest)][getIndex(source)] = weight;
+
+        }
+    }
+
+    public int getIndex(T t){
+        return this.data.indexOf(t);
+    }
+
     @Override
     public int getVertexCount() {
         return arr.size()+1;
@@ -56,12 +74,32 @@ public class GraphM <T extends Comparable<T>> implements GraphI<T>{
 
     @Override
     public boolean hasEdge(T source, T destination) {
-        return false;
+        if (! hasVertex(source))
+            return false;
+        if (! hasVertex(destination))
+            return false;
+        if(is_weighted){
+            return (adjMatrix[getIndex(source)][getIndex(destination)]  ==  -1);
+        }
+        return (adjMatrix[getIndex(source)][getIndex(destination)] == 1);
+
     }
 
     @Override
     public List<T> getAdjacents(T t) {
-        return null;
+        List<T>  adjacents = new ArrayList<>();
+        for (int i = 0; i < numVertices; i++) {
+            if (is_weighted) {
+                if (this.adjMatrix[getIndex(t)][i] != -1) {
+                    adjacents.add(this.data.get(i));
+                }
+            }else {
+                if (this.adjMatrix[getIndex(t)][i] == 1) {
+                    adjacents.add(this.data.get(i));
+                }
+            }
+        }
+        return adjacents;
     }
 
     @Override
