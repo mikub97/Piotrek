@@ -6,17 +6,18 @@ public class GraphTest {
     private GraphI<Integer> integerGraph;
 
     public GraphTest(){
-        this.integerGraph = new Graph<>();
-            integerGraph.addEdge(1,2);
-            integerGraph.addEdge(2,3);
-            integerGraph.addEdge(3,4);
-            integerGraph.addEdge(1,4);
-            integerGraph.addEdge(1,3);
+        this.integerGraph = new GraphM<>();
+//            integerGraph.addEdge(1,2);
+//            integerGraph.addEdge(2,3);
+//            integerGraph.addEdge(3,4);
+//            integerGraph.addEdge(1,4);
+//            integerGraph.addEdge(1,3);
 
     }
     @Test
     public void test(){
-        System.out.println(integerGraph.getEdgeCount());
+        integerGraph.addEdge(1,2);
+        //System.out.println(integerGraph.getEdgeCount());
         //System.out.println(integerGraph.hasEdge(3,2));
     }
 
