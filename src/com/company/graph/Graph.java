@@ -64,7 +64,9 @@ public class Graph <T extends Comparable<T>> implements GraphI<T>{
     }
 
     public List<T> getAdjacents(T t){
-        return adjacencyList.get(t);
+        List<T> adjs = adjacencyList.get(t);
+        adjs.sort((Comparator<? super T>) Comparator.naturalOrder().reversed());
+        return adjs;
     }
 
     public void DFS(T t){

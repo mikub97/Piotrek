@@ -1,9 +1,6 @@
 package com.company.graph;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class GraphM <T extends Comparable<T>> implements GraphI<T>{
     List<List<Integer>> matrix;
@@ -44,6 +41,8 @@ public class GraphM <T extends Comparable<T>> implements GraphI<T>{
     }
 
     public void addEdge(T source, T dest, int weight){
+        if(!hasVertex(source)) addVertex(source);
+        if(!hasVertex(dest)) addVertex(dest);
         if(this.is_directed) {
             this.adjMatrix[getIndex(source)][getIndex(dest)] = weight;
         }else{
@@ -99,6 +98,7 @@ public class GraphM <T extends Comparable<T>> implements GraphI<T>{
                 }
             }
         }
+        adjacents.sort((Comparator<? super T>) Comparator.naturalOrder().reversed());
         return adjacents;
     }
 
