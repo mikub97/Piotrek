@@ -41,5 +41,10 @@ public class GraphUtils implements GraphUtilsI {
 
     }
 
+    @Override
+    public <T> List<T> shortestPath(WeightedGraphM graph, T start, T end) {
+        return null;
+    }
+
 
 }
