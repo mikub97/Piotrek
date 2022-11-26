@@ -12,7 +12,7 @@ public class GraphUtils implements GraphUtilsI {
         while (!stack.empty()){
             active = stack.pop();
             visited.add(active);
-            for (T a : graph.getAdjacents(active)) {
+            for (T a : graph.getAdjacentNodesOf(active)) {
                 if (!visited.contains(a)) stack.push(a);
             }
         }
@@ -30,7 +30,7 @@ public class GraphUtils implements GraphUtilsI {
             active = queue.remove();
             visited.add(active);
 
-            List<T> adjs = graph.getAdjacents(active);
+            List<T> adjs = graph.getAdjacentNodesOf(active);
             Collections.reverse(adjs);
             for (T a : adjs) {
                 if (!visited.contains(a)) queue.add(a);
@@ -42,7 +42,7 @@ public class GraphUtils implements GraphUtilsI {
     }
 
     @Override
-    public <T> List<T> shortestPath(WeightedGraphM graph, T start, T end) {
+    public <T> List<T> shortestPath(WeightedGraphI graph, T start, T end) {
         return null;
     }
 

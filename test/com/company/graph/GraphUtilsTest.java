@@ -6,7 +6,7 @@ public class GraphUtilsTest {
     private GraphI<Integer> integerGraph;
 
     public GraphUtilsTest(){
-        this.integerGraph = new GraphM<>(25);
+        this.integerGraph = new MatrixGraph<>(false);
         integerGraph.addVertex(10);
         integerGraph.addEdge(10,73);
         integerGraph.addEdge(10,65);

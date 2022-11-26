@@ -10,9 +10,6 @@ public interface GraphI <T>{
     int getEdgeCount();
     boolean hasVertex(T t);
     boolean hasEdge(T source, T destination);
-    List<T> getAdjacents(T t);
-    void DFS(T t);
+    List<T> getAdjacentNodesOf(T t);
     String toString();
-
-    void DFS_recursive(T t);
 }
