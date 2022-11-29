@@ -12,14 +12,14 @@ public class GraphTest<T> {
 
 
     public GraphTest(){
-        this.integerMatrixGraph = new MatrixGraph<>(false);
+        this.integerMatrixGraph = new MatrixGraph<>(true);
         integerMatrixGraph.addEdge(1,2);
         integerMatrixGraph.addEdge(2,3);
         integerMatrixGraph.addEdge(3,4);
         integerMatrixGraph.addEdge(1,4);
         integerMatrixGraph.addEdge(1,3);
 
-        this.integerListGraph = new MatrixGraph<>(false);
+        this.integerListGraph = new ListGraph<>(false);
         integerListGraph.addEdge(1,2);
         integerListGraph.addEdge(2,3);
         integerListGraph.addEdge(3,4);
@@ -63,9 +63,13 @@ public class GraphTest<T> {
     }
     @Test
     public void getEdgeCount(){
-        System.out.println(integerMatrixGraph.getEdgeCount());
-        assert integerMatrixGraph.getEdgeCount() ==5;
+        for (int i = 0; i < graphs.size(); i++) {
+            assert graphs.get(i).getEdgeCount() == 5;
+            graphs.get(i).addEdge(1,10);
+            assert graphs.get(i).getEdgeCount() == 6;
 
+
+        }
     }
 
     @Test
@@ -76,14 +80,27 @@ public class GraphTest<T> {
     }
     @Test
     public void getAdjacents(){
+
         for (int i = 0; i < graphs.size(); i++) {
-            assert graphs.get(i).getAdjacentNodesOf(3).contains(2);
-            assert graphs.get(i).getAdjacentNodesOf(3).contains(1);
-            assert graphs.get(i).getAdjacentNodesOf(3).contains(4);
-            assert !graphs.get(i).getAdjacentNodesOf(3).contains(10);
-            assert !graphs.get(i).getAdjacentNodesOf(3).contains(3);
-            assert graphs.get(i).getAdjacentNodesOf(3).size()==3;
-            assert graphs.get(i).getAdjacentNodesOf(4).size()==2;
+            if (!graphs.get(i).isDirected()) {
+                assert graphs.get(i).getAdjacentNodesOf(3).contains(2);
+                assert graphs.get(i).getAdjacentNodesOf(3).contains(1);
+                assert graphs.get(i).getAdjacentNodesOf(3).contains(4);
+                assert !graphs.get(i).getAdjacentNodesOf(3).contains(10);
+                assert !graphs.get(i).getAdjacentNodesOf(3).contains(3);
+                assert graphs.get(i).getAdjacentNodesOf(3).size() == 3;
+                assert graphs.get(i).getAdjacentNodesOf(4).size() == 2;
+            }else{
+                assert graphs.get(i).getAdjacentNodesOf(1).contains(2);
+                assert graphs.get(i).getAdjacentNodesOf(1).contains(3);
+                assert graphs.get(i).getAdjacentNodesOf(1).contains(4);
+                assert graphs.get(i).getAdjacentNodesOf(2).contains(3);
+                assert graphs.get(i).getAdjacentNodesOf(3).contains(4);
+                assert !graphs.get(i).getAdjacentNodesOf(3).contains(10);
+                assert !graphs.get(i).getAdjacentNodesOf(3).contains(3);
+                assert graphs.get(i).getAdjacentNodesOf(3).size() == 1;
+                assert graphs.get(i).getAdjacentNodesOf(4).size() == 0;
+            }
         }
     }
 

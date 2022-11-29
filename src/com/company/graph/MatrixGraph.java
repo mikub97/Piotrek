@@ -73,6 +73,11 @@ public class MatrixGraph<T extends Comparable<T>> implements GraphI<T>{
         return adjs;
     }
 
+    @Override
+    public boolean isDirected() {
+        return is_directed;
+    }
+
 
     @Override
     public int getVertexCount() {
@@ -88,6 +93,14 @@ public class MatrixGraph<T extends Comparable<T>> implements GraphI<T>{
     //TODO !!
     @Override
     public int getEdgeCount() {
-        return 0;
+        int tot = 0;
+        for (List<Integer> list :matrix) {
+            for (int i:list) {
+                if(i == 1)tot++;
+            }
+        }
+        tot = tot-getVertexCount();
+        if (!is_directed) return tot/2;
+        return tot;
     }
 }

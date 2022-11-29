@@ -12,4 +12,6 @@ public interface GraphI <T>{
     boolean hasEdge(T source, T destination);
     List<T> getAdjacentNodesOf(T t);
     String toString();
+
+    boolean isDirected();
 }

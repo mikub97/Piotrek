@@ -43,6 +43,8 @@ public class ListGraph<T extends Comparable<T>> implements GraphI<T>{
         for (List<T> adjs: adjacencyList.values()) {
             c += adjs.size();
         }
+        if (!this.is_directed)
+            return c/2;
         return c;
     }
 
@@ -53,6 +55,9 @@ public class ListGraph<T extends Comparable<T>> implements GraphI<T>{
 
     @Override
     public boolean hasEdge(T source, T dest) {
+        if (! adjacencyList.containsKey(source) || !adjacencyList.containsKey(dest))
+            return false;
+
         return adjacencyList.get(source).contains(dest);
     }
 
@@ -60,6 +65,11 @@ public class ListGraph<T extends Comparable<T>> implements GraphI<T>{
         List<T> adjs = adjacencyList.get(t);
         adjs.sort((Comparator<? super T>) Comparator.naturalOrder().reversed());
         return adjs;
+    }
+
+    @Override
+    public boolean isDirected() {
+        return is_directed;
     }
 
 }
