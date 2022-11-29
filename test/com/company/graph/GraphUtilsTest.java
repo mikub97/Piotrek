@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class GraphUtilsTest {
     private GraphI<Integer> integerGraph;
+    private GraphUtils graphUtils;
 
     public GraphUtilsTest(){
         this.integerGraph = new MatrixGraph<>(false);
@@ -26,15 +27,18 @@ public class GraphUtilsTest {
         integerGraph.addEdge(7,77);
         integerGraph.addEdge(6,-1);
         integerGraph.addEdge(6,54);
+        this.graphUtils= new GraphUtils();
 
     }
 
     @Test
     void graphutils(){
-        GraphUtils graphUtils = new GraphUtils();
         System.out.println(graphUtils.BFS(integerGraph, 10));
         //assert integerGraph.hasVertex(10);
+    }
 
+    @Test
+    void dijstra(){
 
     }
 }

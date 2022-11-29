@@ -97,7 +97,7 @@ public class GraphTest {
 
     @Test
     public void createGraphFromComponent(){
-        Graph g = graph.createGraphFromComponent(6);
+        Graph g = graph.createGraphFromComponent(1);
         Edge edge = g.getEdge(86374);
     }
 

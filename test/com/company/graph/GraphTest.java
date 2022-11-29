@@ -26,6 +26,7 @@ public class GraphTest<T> {
         integerListGraph.addEdge(1,4);
         integerListGraph.addEdge(1,3);
 
+
         graphs = new ArrayList<>();
         graphs.addAll(List.of(new GraphI[]{integerListGraph, integerMatrixGraph}));
     }

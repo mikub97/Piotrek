@@ -1,6 +1,7 @@
 package com.company.graph;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class GraphUtils implements GraphUtilsI {
     @Override
@@ -43,7 +44,31 @@ public class GraphUtils implements GraphUtilsI {
 
     @Override
     public <T> List<T> shortestPath(WeightedGraphI graph, T start, T end) {
-        return null;
+        Map<T,Double> distances = new HashMap<>();
+        Map<T,T> precedes = new HashMap<>();
+
+        graph.getNodes().forEach(new Consumer<T>() {
+            @Override
+            public void accept(T o) {
+                distances.put(o,Double.MAX_VALUE);
+                precedes.put(o,null);
+            }
+        });
+
+        Comparator<T> comparator= new Comparator<T>() {
+            @Override
+            public int compare(T o1, T o2) {
+                return (int) (distances.get(o1)-distances.get(o2));
+            }
+        };
+
+        PriorityQueue<T> queue = new PriorityQueue(comparator);
+        distances.replace(start,0.0);
+        List<T> list = new ArrayList<>();
+        list.add(queue.poll());
+        list.add(queue.poll());
+        return list;
+
     }
 
 

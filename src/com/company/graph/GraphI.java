@@ -14,4 +14,6 @@ public interface GraphI <T>{
     String toString();
 
     boolean isDirected();
+    List<T> getNodes();
+
 }
