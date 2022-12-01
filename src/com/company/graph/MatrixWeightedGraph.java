@@ -2,7 +2,7 @@ package com.company.graph;
 
 import java.util.*;
 
-public  class MatrixGraphW<T extends Comparable<T>> implements GraphI<T>{
+public  class MatrixWeightedGraph<T extends Comparable<T>> implements WeightedGraphI<T>{
     private static final double DEFAULT_WEIGHT = -1;
     List<List<Double>> matrix;
     List<T> data;
@@ -10,7 +10,7 @@ public  class MatrixGraphW<T extends Comparable<T>> implements GraphI<T>{
 
 
 
-    public MatrixGraphW(boolean is_directed){
+    public MatrixWeightedGraph(boolean is_directed){
         this.matrix  = new ArrayList<>();
         this.data = new ArrayList<>();
         this.is_directed=is_directed;
@@ -94,7 +94,6 @@ public  class MatrixGraphW<T extends Comparable<T>> implements GraphI<T>{
     }
 
 
-    //TODO !!
     @Override
     public int getEdgeCount() {
         int tot = 0;

@@ -42,18 +42,19 @@ public class GraphUtils implements GraphUtilsI {
 
     }
 
+    //TODO
     @Override
     public <T> List<T> shortestPath(WeightedGraphI graph, T start, T end) {
         Map<T,Double> distances = new HashMap<>();
         Map<T,T> precedes = new HashMap<>();
 
-//        graph.getNodes().forEach(new Consumer<T>() {
-//            @Override
-//            public void accept(T o) {
-//                distances.put(o,Double.MAX_VALUE);
-//                precedes.put(o,null);
-//            }
-//        });
+        graph.getNodes().forEach(new Consumer<T>() {
+            @Override
+            public void accept(T o) {
+                distances.put(o,Double.MAX_VALUE);
+                precedes.put(o,null);
+            }
+        });
 
         Comparator<T> comparator= new Comparator<T>() {
             @Override
@@ -63,13 +64,14 @@ public class GraphUtils implements GraphUtilsI {
         };
 
         PriorityQueue<T> queue = new PriorityQueue(comparator);
+        queue.addAll(graph.getNodes());
         distances.replace(start,0.0);
+
         List<T> list = new ArrayList<>();
         list.add(queue.poll());
         list.add(queue.poll());
-        return list;
+        return list;    }
 
-    }
 
 
 }
