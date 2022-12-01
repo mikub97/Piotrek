@@ -47,13 +47,13 @@ public class GraphUtils implements GraphUtilsI {
         Map<T,Double> distances = new HashMap<>();
         Map<T,T> precedes = new HashMap<>();
 
-        graph.getNodes().forEach(new Consumer<T>() {
-            @Override
-            public void accept(T o) {
-                distances.put(o,Double.MAX_VALUE);
-                precedes.put(o,null);
-            }
-        });
+//        graph.getNodes().forEach(new Consumer<T>() {
+//            @Override
+//            public void accept(T o) {
+//                distances.put(o,Double.MAX_VALUE);
+//                precedes.put(o,null);
+//            }
+//        });
 
         Comparator<T> comparator= new Comparator<T>() {
             @Override

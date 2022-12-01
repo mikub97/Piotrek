@@ -12,12 +12,13 @@ public class GraphTest<T> {
 
 
     public GraphTest(){
-        this.integerMatrixGraph = new MatrixGraph<>(true);
+        this.integerMatrixGraph = new MatrixGraph<>(true );
         integerMatrixGraph.addEdge(1,2);
         integerMatrixGraph.addEdge(2,3);
         integerMatrixGraph.addEdge(3,4);
         integerMatrixGraph.addEdge(1,4);
         integerMatrixGraph.addEdge(1,3);
+
 
         this.integerListGraph = new ListGraph<>(false);
         integerListGraph.addEdge(1,2);
@@ -48,7 +49,7 @@ public class GraphTest<T> {
             assert  !graphs.get(i).hasEdge(10,1);
             assert  graphs.get(i).hasEdge(1,3);
 
-            graphs.get(i).addEdge(10,1);
+            graphs.get(i).addEdge(10,1, 10.00);
 
             assert  graphs.get(i).hasEdge(10,1);
             graphs.get(i).addEdge(106,108);

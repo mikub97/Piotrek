@@ -5,7 +5,8 @@ import java.util.List;
 public interface GraphI <T>{
 
     void addVertex(T t);
-    void addEdge(T source, T dest);
+    default void addEdge(T source, T dest){};
+    default void addEdge(T source, T dest, double weight){addEdge(source, dest);};
     int getVertexCount();
     int getEdgeCount();
     boolean hasVertex(T t);
@@ -14,6 +15,6 @@ public interface GraphI <T>{
     String toString();
 
     boolean isDirected();
-    List<T> getNodes();
+    //List<T> getNodes();
 
 }
