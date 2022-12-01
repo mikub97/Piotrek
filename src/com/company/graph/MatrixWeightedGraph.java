@@ -115,6 +115,10 @@ public  class MatrixWeightedGraph<T extends Comparable<T>> implements WeightedGr
     @Override
     public List<Pair<T, Double>> getAdjacentNodesWithWeightsOf(T t) {
         List<Pair<T, Double>> list = new ArrayList<>();
-        return null;
+        List<T> listAdjacent = getAdjacentNodesOf(t);
+        for (T nextTo: listAdjacent) {
+            list.add( new Pair<>(nextTo, this.matrix.get(getIndex(t)).get(getIndex(nextTo))));
+        }
+        return list;
     }
 }
