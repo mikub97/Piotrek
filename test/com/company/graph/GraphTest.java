@@ -6,18 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GraphTest<T> {
-    private GraphI<Integer> integerMatrixGraph;
+    private GraphI<Integer> matrixGraph;
+    private WeightedGraphI<Integer> weightedGraph;
+
     private GraphI<Integer> integerListGraph;
     private List<GraphI> graphs;
 
 
     public GraphTest(){
-        this.integerMatrixGraph = new MatrixGraph<>(true );
-        integerMatrixGraph.addEdge(1,2);
-        integerMatrixGraph.addEdge(2,3);
-        integerMatrixGraph.addEdge(3,4);
-        integerMatrixGraph.addEdge(1,4);
-        integerMatrixGraph.addEdge(1,3);
+        this.matrixGraph = new MatrixGraph<>(true );
+        matrixGraph.addEdge(1,2);
+        matrixGraph.addEdge(2,3);
+        matrixGraph.addEdge(3,4);
+        matrixGraph.addEdge(1,4);
+        matrixGraph.addEdge(1,3);
 
 
         this.integerListGraph = new ListGraph<>(false);
@@ -29,7 +31,7 @@ public class GraphTest<T> {
 
 
         graphs = new ArrayList<>();
-        graphs.addAll(List.of(new GraphI[]{integerListGraph, integerMatrixGraph}));
+        graphs.addAll(List.of(new GraphI[]{integerListGraph, matrixGraph}));
     }
     @Test
     void addVertexTest(){
@@ -49,7 +51,7 @@ public class GraphTest<T> {
             assert  !graphs.get(i).hasEdge(10,1);
             assert  graphs.get(i).hasEdge(1,3);
 
-            graphs.get(i).addEdge(10,1, 10.00);
+            graphs.get(i).addEdge(10,1);
 
             assert  graphs.get(i).hasEdge(10,1);
             graphs.get(i).addEdge(106,108);
@@ -76,9 +78,9 @@ public class GraphTest<T> {
 
     @Test
     public void hasEdge(){
-        assert integerMatrixGraph.hasEdge(1,3);
-        assert ! integerMatrixGraph.hasEdge(2,4);
-        assert !integerMatrixGraph.hasEdge(2,10);
+        assert matrixGraph.hasEdge(1,3);
+        assert ! matrixGraph.hasEdge(2,4);
+        assert !matrixGraph.hasEdge(2,10);
     }
     @Test
     public void getAdjacents(){

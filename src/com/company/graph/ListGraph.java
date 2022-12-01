@@ -72,4 +72,9 @@ public class ListGraph<T extends Comparable<T>> implements GraphI<T>{
         return is_directed;
     }
 
+    @Override
+    public List<T> getNodes() {
+        return this.adjacencyList.keySet().stream().toList();
+    }
+
 }

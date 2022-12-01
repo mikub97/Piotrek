@@ -5,8 +5,7 @@ import java.util.List;
 public interface GraphI <T>{
 
     void addVertex(T t);
-    default void addEdge(T source, T dest){};
-    default void addEdge(T source, T dest, double weight){addEdge(source, dest);};
+     void addEdge(T source, T dest);
     int getVertexCount();
     int getEdgeCount();
     boolean hasVertex(T t);

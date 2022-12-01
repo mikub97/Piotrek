@@ -78,6 +78,11 @@ public class MatrixGraph<T extends Comparable<T>> implements GraphI<T>{
         return is_directed;
     }
 
+    @Override
+    public List<T> getNodes() {
+        return data;
+    }
+
 
     @Override
     public int getVertexCount() {

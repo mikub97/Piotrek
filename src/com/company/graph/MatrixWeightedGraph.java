@@ -82,6 +82,11 @@ public  class MatrixWeightedGraph<T extends Comparable<T>> implements WeightedGr
         return is_directed;
     }
 
+    @Override
+    public List<T> getNodes() {
+        return data;
+    }
+
 
     @Override
     public int getVertexCount() {
@@ -105,5 +110,11 @@ public  class MatrixWeightedGraph<T extends Comparable<T>> implements WeightedGr
         tot = tot-getVertexCount();
         if (!is_directed) return tot/2;
         return tot;
+    }
+
+    @Override
+    public List<Pair<T, Double>> getAdjacentNodesWithWeightsOf(T t) {
+        List<Pair<T, Double>> list = new ArrayList<>();
+        return null;
     }
 }
