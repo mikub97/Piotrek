@@ -42,35 +42,45 @@ public class GraphUtils implements GraphUtilsI {
 
     }
 
-    //TODO
-    @Override
-    public <T> List<T> shortestPath(WeightedGraphI graph, T start, T end) {
-        Map<T,Double> distances = new HashMap<>();
-        Map<T,T> precedes = new HashMap<>();
 
+    @Override
+    public <T extends Comparable> List<Double> shortestPath(WeightedGraphI graph, T start, T end) {
+        Map<T, Double> distances = new HashMap<>();
+        Map<T, T> precedes = new HashMap<>();
+        List<T> visited = new ArrayList<>();
+
+        //init
         graph.getNodes().forEach(new Consumer<T>() {
             @Override
             public void accept(T o) {
-                distances.put(o,Double.MAX_VALUE);
-                precedes.put(o,null);
+                distances.put(o, Double.MAX_VALUE);
+                precedes.put(o, null);
             }
         });
 
-        Comparator<T> comparator= new Comparator<T>() {
+        Comparator<T> comparator = new Comparator<T>() {
             @Override
             public int compare(T o1, T o2) {
-                return (int) (distances.get(o1)-distances.get(o2));
+                return (int) (distances.get(o1) - distances.get(o2));
             }
         };
 
         PriorityQueue<T> queue = new PriorityQueue(comparator);
         queue.addAll(graph.getNodes());
-        distances.replace(start,0.0);
+        distances.replace(start, 0.0);
+        while (!queue.isEmpty()) {
+            T curr = queue.poll();
+            visited.add(curr);
+            List<Pair<T,Double>> adjacentNodesWithWeightsOf = graph.getAdjacentNodesWithWeightsOf(curr);
+            for (int i = 0; i < adjacentNodesWithWeightsOf.size(); i++) {
+                if (distances.get(adjacentNodesWithWeightsOf.get(i).getT()) >distances.get(curr)+adjacentNodesWithWeightsOf.get(i).getWeight())
+                    distances.put(adjacentNodesWithWeightsOf.get(i).getT(),distances.get(curr)+adjacentNodesWithWeightsOf.get(i).getWeight());
+                    precedes.put(adjacentNodesWithWeightsOf.get(i).getT(),curr);
+            }
+        }
 
-        List<T> list = new ArrayList<>();
-        list.add(queue.poll());
-        list.add(queue.poll());
-        return list;    }
+        return distances.values().stream().toList();
+    }
 
 
 

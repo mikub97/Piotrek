@@ -3,3 +3,4 @@ out/production/Piotrek/com/company/graph/antColonyGraph/Edge.class
 *.class
 src/com/company/tick_tack_toe/TicTacToe.java
 src/com/company/others/OldSchoolHttpServer.java
+*.class

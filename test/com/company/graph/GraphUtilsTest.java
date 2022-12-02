@@ -35,24 +35,29 @@ public class GraphUtilsTest {
 
         this.weightedGraph = new MatrixWeightedGraph(false);
         weightedGraph.addVertex(10);
-        weightedGraph.addEdge(10,73);
-        weightedGraph.addEdge(10,65);
-        weightedGraph.addEdge(10,51);
-        weightedGraph.addEdge(73,2);
-        weightedGraph.addEdge(73,3);
-        weightedGraph.addEdge(51,1001);
-        weightedGraph.addEdge(51,69);
-        weightedGraph.addEdge(3,1);
-        weightedGraph.addEdge(3,100);
-        weightedGraph.addEdge(1001,5);
-        weightedGraph.addEdge(1001,66);
-        weightedGraph.addEdge(1001,7);
-        weightedGraph.addEdge(5,53);
-        weightedGraph.addEdge(66,6);
-        weightedGraph.addEdge(7,8);
-        weightedGraph.addEdge(7,77);
-        weightedGraph.addEdge(6,-1);
-        weightedGraph.addEdge(6,54);
+        weightedGraph.addEdge(10,73,3.0);
+        weightedGraph.addEdge(10,65,4);
+        weightedGraph.addEdge(10,51,7);
+        weightedGraph.addEdge(73,2,20);
+        weightedGraph.addEdge(73,3,24);
+        weightedGraph.addEdge(51,1001,10);
+        weightedGraph.addEdge(51,69,9);
+        weightedGraph.addEdge(3,1,4);
+        weightedGraph.addEdge(3,100,4);
+        weightedGraph.addEdge(1001,5,7);
+        weightedGraph.addEdge(1001,66,5);
+        weightedGraph.addEdge(1001,7,40);
+        weightedGraph.addEdge(5,53,40);
+        weightedGraph.addEdge(66,6,3);
+        weightedGraph.addEdge(7,8,41);
+        weightedGraph.addEdge(7,77,13);
+        weightedGraph.addEdge(6,-1,12);
+        weightedGraph.addEdge(6,54,11);
+        weightedGraph.addEdge(65,42,1);
+        weightedGraph.addEdge(42,3,1);
+        weightedGraph.addEdge(3,10,1);
+
+
         this.graphUtils= new GraphUtils();
 
     }
@@ -64,7 +69,7 @@ public class GraphUtilsTest {
 
     @Test
     void dijstra(){
-        List<Integer> integers = graphUtils.shortestPath(weightedGraph, 3, 5);
-        System.out.println(integers);
+        List<Double> distances = graphUtils.shortestPath(weightedGraph, 10, 5);
+        System.out.println(distances);
     }
 }
