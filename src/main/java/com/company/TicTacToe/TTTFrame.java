@@ -77,8 +77,9 @@ public class TTTFrame extends Application {
             text.setText("O");
         }
     }
-        public static void main (String[]args){
-            launch(args);
-        }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
 
