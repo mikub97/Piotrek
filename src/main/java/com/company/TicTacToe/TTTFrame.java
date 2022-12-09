@@ -20,8 +20,9 @@ public class TTTFrame extends Application {
     private static final int HEIGHT = 600;
     private Pane root= new Pane();
     private Tile[][] board = new Tile[3][3];
-
+    private GameController controller;
     private Parent createContent() {
+
         root.setPrefSize(HEIGHT, WIDTH);
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -53,6 +54,8 @@ public class TTTFrame extends Application {
             getChildren().addAll(border, text);
 
             setOnMouseClicked(event -> {
+
+
                 System.out.println("("+""+event.getX()+", " + event.getY()+")");
             });
         }
@@ -78,8 +81,6 @@ public class TTTFrame extends Application {
         }
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 }
 
