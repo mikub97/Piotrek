@@ -1,31 +1,25 @@
 package com.company.TicTacToe;
 
-public class GameController implements GameControllerI{
-
-
-    private final PlayerI player1;
-    private final PlayerI player2;
+public class GameController{
     private boolean isPlayer1Now;
     private int movesLeft;
-    GameState currentGameState;
+    private GameState currentGameState;
 
-    public GameController(PlayerI player1, PlayerI player2){
+    public GameController(){
         currentGameState = new GameState();
-        this.player1 = player1;
-        this.player2 = player2;
         this.movesLeft=9;
         this.isPlayer1Now=true;
 
     }
 
-    @Override
-    public void startGame() {
-    }
+    public GameState nextMove(int position) {
+        if (currentGameState.isEmpty(position)){
+            if (isPlayer1Now)currentGameState.set(position, GameCharacter.O);
+            else currentGameState.set(position, GameCharacter.X);
+            isPlayer1Now=!isPlayer1Now;
+        }else return null;
 
-
-    @Override
-    public void nextMove() {
-        // depending on who's now, player1.nextMove(gameState) or player2.nextMove(gameState)
+        return currentGameState;
 
     }
 }

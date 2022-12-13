@@ -18,6 +18,7 @@ public class TTTFrame extends Application {
 
     private static final int WIDTH = 600;
     private static final int HEIGHT = 600;
+    private GameController gameController;
     private Pane root= new Pane();
     private Tile[][] board = new Tile[3][3];
     private GameController controller;
@@ -38,6 +39,7 @@ public class TTTFrame extends Application {
 
         @Override
         public void start (Stage primaryStage) throws Exception {
+            gameController = new GameController();
             primaryStage.setScene(new Scene(createContent()));
             primaryStage.show();
         }
@@ -53,10 +55,15 @@ public class TTTFrame extends Application {
             setAlignment(Pos.CENTER);
             getChildren().addAll(border, text);
 
+
             setOnMouseClicked(event -> {
-
-
-                System.out.println("("+""+event.getX()+", " + event.getY()+")");
+                int x = ((int)event.getSceneX()/200);
+                int y = ((int)event.getSceneY()/200);
+                //System.out.println("("+""+event.getSceneX()+", " + event.getSceneY()+")");
+                System.out.println(x+y*3);
+                GameState gameState = gameController.nextMove(x+y*3);
+                if (gameState.getCharacters()[x+y*3] == GameCharacter.O) drawO();
+                if (gameState.getCharacters()[x+y*3] == GameCharacter.X) drawX();
             });
         }
 

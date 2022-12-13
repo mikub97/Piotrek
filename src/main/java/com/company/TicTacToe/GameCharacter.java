@@ -1,6 +1,6 @@
 package com.company.TicTacToe;
 
-public enum GameCaracter {
+public enum GameCharacter {
     X,
     O,
     EMPTY;
