@@ -4,6 +4,12 @@ import java.util.Arrays;
 
 public class GameState {
     private GameCharacter[] characters;
+    public static final int GAME_DRAW = 0;
+    public static final int GAME_X_WINNER = 1;
+    public static final int GAME_O_WINNER = 2;
+    public static final int GAME_NOT_FINISHED = 3;
+
+    private int gameState = 3;
 
     GameState(){
         characters = new GameCharacter[9];
